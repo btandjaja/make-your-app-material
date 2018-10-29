@@ -25,4 +25,12 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="book_title" parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="author_on_card" parent="@style/TextAppearance.AppCompat.Body1">
+
+    </style>
+
 </resources>

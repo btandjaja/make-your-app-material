@@ -2,10 +2,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="@dimen/card_padding_4dp"
+    android:layout_marginRight="@dimen/card_padding_4dp"
+    android:layout_marginTop="@dimen/card_padding_4dp"
+    android:layout_marginBottom="@dimen/card_padding_4dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground">
@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blue_gray_500"
         android:orientation="vertical">
 
         <!--suppress AndroidLintContentDescription -->
@@ -24,26 +25,26 @@
 
         <TextView
             android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
+            style="@style/book_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="4dp"
+            android:paddingLeft="@dimen/card_text_padding_16dp"
+            android:paddingTop="@dimen/card_text_padding_16dp"
+            android:paddingRight="@dimen/card_text_padding_16dp"
+            android:paddingBottom="@dimen/card_padding_4dp"
             android:textColor="@color/ltgray"
             android:ellipsize="end"
             android:maxLines="4" />
 
         <TextView
             android:id="@+id/article_subtitle"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/author_on_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:textColor="#6000"
+            android:paddingLeft="@dimen/card_text_padding_16dp"
+            android:paddingRight="@dimen/card_text_padding_16dp"
+            android:paddingBottom="@dimen/card_text_padding_16dp"
+            android:textColor="@color/black"
             android:maxLines="2"
             android:ellipsize="end" />
     </LinearLayout>

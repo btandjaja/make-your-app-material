@@ -23,4 +23,9 @@
     <color name="ltgray">#ffe0e0e0</color>
     <color name="pink_400">#EC407A</color>
     <color name="pink_A100">#FF80AB</color>
+    <color name="black">#000000</color>
+    <color name="blue_gray_300">#90A4AE</color>
+    <color name="blue_gray_500">#607D8B</color>
+    <color name="blue_gray_700">#455A64</color>
+    <color name="blue_gray_900">#263238</color>
 </resources>
