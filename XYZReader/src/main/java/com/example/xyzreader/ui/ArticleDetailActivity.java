@@ -6,6 +6,7 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
@@ -19,6 +20,7 @@ import android.view.WindowInsets;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
+import com.example.xyzreader.data.ItemsProvider;
 
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
@@ -119,8 +121,13 @@ public class ArticleDetailActivity extends AppCompatActivity
 
         // Select the start ID
         if (mStartId > 0) {
-            mCursor.moveToFirst();
+//            Uri itemQuery = ItemsContract.Items.buildItemUri(mStartId);
+//            int position = (int) ItemsContract.Items.getItemId(itemQuery);
+//            mPager.setCurrentItem(position, false);
+//            int position = (int) mCursor.getLong(ArticleLoader.Query._ID);
+
             // TODO: optimize
+            mCursor.moveToFirst();
             while (!mCursor.isAfterLast()) {
                 if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
                     final int position = mCursor.getPosition();
@@ -129,6 +136,7 @@ public class ArticleDetailActivity extends AppCompatActivity
                 }
                 mCursor.moveToNext();
             }
+
             mStartId = 0;
         }
     }
