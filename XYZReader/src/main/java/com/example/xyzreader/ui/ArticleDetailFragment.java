@@ -20,6 +20,8 @@ import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.Spanned;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -33,6 +35,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
+
+import static android.support.v4.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
 
 /**
  * A fragment representing a single Article detail screen. This fragment is
@@ -232,7 +236,11 @@ public class ArticleDetailFragment extends Fragment implements
                                 + "</font>"));
 
             }
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
+            // TODO split spanned string by paragraph and display by recyclerview
+            Spanned articleBody = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replace("\r\n|\n)", "<br />"));
+            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
+                    .substring(0,500)
+                    .replaceAll("(\r\n|\n)", "<br />")), TextView.BufferType.SPANNABLE);
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override

@@ -121,21 +121,19 @@ public class ArticleDetailActivity extends AppCompatActivity
 
         // Select the start ID
         if (mStartId > 0) {
-//            Uri itemQuery = ItemsContract.Items.buildItemUri(mStartId);
-//            int position = (int) ItemsContract.Items.getItemId(itemQuery);
-//            mPager.setCurrentItem(position, false);
-//            int position = (int) mCursor.getLong(ArticleLoader.Query._ID);
-
+            Uri itemQuery = ItemsContract.Items.buildItemUri(mStartId);
+            int position = (int) ItemsContract.Items.getItemId(itemQuery);
+            mPager.setCurrentItem(position, false);
             // TODO: optimize
-            mCursor.moveToFirst();
-            while (!mCursor.isAfterLast()) {
-                if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
-                    final int position = mCursor.getPosition();
-                    mPager.setCurrentItem(position, false);
-                    break;
-                }
-                mCursor.moveToNext();
-            }
+//            mCursor.moveToFirst();
+//            while (!mCursor.isAfterLast()) {
+//                if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
+//                    final int position = mCursor.getPosition();
+//                    mPager.setCurrentItem(position, false);
+//                    break;
+//                }
+//                mCursor.moveToNext();
+//            }
 
             mStartId = 0;
         }
