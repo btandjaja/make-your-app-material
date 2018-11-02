@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,25 +117,14 @@ public class ArticleDetailActivity extends AppCompatActivity
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        mCursor = cursor;
-        mPagerAdapter.notifyDataSetChanged();
-
+        // TODO fixed efficiency
         // Select the start ID
         if (mStartId > 0) {
             Uri itemQuery = ItemsContract.Items.buildItemUri(mStartId);
-            int position = (int) ItemsContract.Items.getItemId(itemQuery);
+            mCursor = getContentResolver().query(itemQuery, null, null, null, null);
+            mPagerAdapter.notifyDataSetChanged();
+            int position = (int) mCursor.getLong(ArticleLoader.Query._ID);
             mPager.setCurrentItem(position, false);
-            // TODO: optimize
-//            mCursor.moveToFirst();
-//            while (!mCursor.isAfterLast()) {
-//                if (mCursor.getLong(ArticleLoader.Query._ID) == mStartId) {
-//                    final int position = mCursor.getPosition();
-//                    mPager.setCurrentItem(position, false);
-//                    break;
-//                }
-//                mCursor.moveToNext();
-//            }
-
             mStartId = 0;
         }
     }

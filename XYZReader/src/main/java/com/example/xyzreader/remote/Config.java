@@ -12,7 +12,7 @@ public class Config {
         try {
             url = new URL("https://go.udacity.com/xyz-reader-json" );
         } catch (MalformedURLException ignored) {
-            // TODO: throw a real error
+            // TODO: throw a real error (don't know if it's right)
             throw new AssertionError(ignored);
         }
 

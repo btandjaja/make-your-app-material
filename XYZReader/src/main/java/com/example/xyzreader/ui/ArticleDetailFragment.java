@@ -236,8 +236,13 @@ public class ArticleDetailFragment extends Fragment implements
                                 + "</font>"));
 
             }
-            // TODO split spanned string by paragraph and display by recyclerview
-            Spanned articleBody = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replace("\r\n|\n)", "<br />"));
+            // TODO create recyclerView for the text to be show
+//            bodyView.setText(Spannable, TextView.BufferType.SPANNABLE);
+//            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
+//            Spanned body = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY));
+//            Log.d(ArticleDetailFragment.class.getSimpleName(), body.toString());
+            String articleBodyString = mCursor.getString(ArticleLoader.Query.BODY);
+//            Spanned articleBody = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replace("\r\n|\n)", "<br />"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
                     .substring(0,500)
                     .replaceAll("(\r\n|\n)", "<br />")), TextView.BufferType.SPANNABLE);

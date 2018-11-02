@@ -87,6 +87,7 @@
                     android:textColorLink="@color/theme_accent"
                     android:textSize="@dimen/detail_body_text_size"
                     android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
+                <!--<include layout="@layout/article_body_for_recyclerview" />-->
 
             </com.example.xyzreader.ui.MaxWidthLinearLayout>
         </FrameLayout>
