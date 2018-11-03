@@ -5,6 +5,7 @@ import java.net.URL;
 
 public class Config {
     public static final URL BASE_URL;
+    // TODO remove TAG
     private static String TAG = Config.class.toString();
 
     static {

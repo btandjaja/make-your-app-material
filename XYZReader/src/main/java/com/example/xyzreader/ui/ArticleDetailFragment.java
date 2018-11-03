@@ -242,9 +242,10 @@ public class ArticleDetailFragment extends Fragment implements
 //            Spanned body = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY));
 //            Log.d(ArticleDetailFragment.class.getSimpleName(), body.toString());
             String articleBodyString = mCursor.getString(ArticleLoader.Query.BODY);
+            Log.d(ArticleDetailFragment.class.getSimpleName() + "****", articleBodyString);
 //            Spanned articleBody = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replace("\r\n|\n)", "<br />"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
-                    .substring(0,500)
+                    .substring(0,1000)
                     .replaceAll("(\r\n|\n)", "<br />")), TextView.BufferType.SPANNABLE);
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
