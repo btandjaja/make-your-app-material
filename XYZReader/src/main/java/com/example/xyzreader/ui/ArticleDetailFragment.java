@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.Spanned;
@@ -57,6 +58,10 @@ public class ArticleDetailFragment extends Fragment implements
     private ObservableScrollView mScrollView;
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
+    // TODO check
+    private RecyclerView mRecyclerViewTextBody;
+    private TextParagraphAdapter mTextBodyAdapter;
+    private String[] mTextBodyString;
 
     private int mTopInset;
     private View mPhotoContainerView;
@@ -155,6 +160,7 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
+        instantiateBodyTextHelper();
         updateStatusBar();
         return mRootView;
     }
@@ -207,10 +213,9 @@ public class ArticleDetailFragment extends Fragment implements
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-
-
-        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
+        // TODO what do to
+//        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
+//        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -237,12 +242,12 @@ public class ArticleDetailFragment extends Fragment implements
 
             }
             // TODO create recyclerView for the text to be show
-            String[] articleBodyString = TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY));
-//            String articleBodyString = mCursor.getString(ArticleLoader.Query.BODY);
-//            Spanned articleBody = Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replace("\r\n|\n)", "<br />"));
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
-                    .substring(0,1000)
-                    .replaceAll("(\r\n|\n)", "<br />")), TextView.BufferType.SPANNABLE);
+            setBodyTextAdapter();
+            // TODO replace with recyclerView
+            // TODO what do to
+//            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
+//                    .substring(0,1000)
+//                    .replaceAll("(\r\n|\n)", "<br />")), TextView.BufferType.SPANNABLE);
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -267,7 +272,8 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
             bylineView.setText("N/A" );
-            bodyView.setText("N/A");
+            // TODO what do to
+//            bodyView.setText("N/A");
         }
     }
 
@@ -310,5 +316,15 @@ public class ArticleDetailFragment extends Fragment implements
         return mIsCard
                 ? (int) mPhotoContainerView.getTranslationY() + mPhotoView.getHeight() - mScrollY
                 : mPhotoView.getHeight() - mScrollY;
+    }
+
+    private void instantiateBodyTextHelper() {
+        mRecyclerViewTextBody = mRootView.findViewById(R.id.rv_body);
+        mTextBodyAdapter = new TextParagraphAdapter(getContext());
+    }
+
+    private void setBodyTextAdapter() {
+        mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
+        mRecyclerViewTextBody.setAdapter(mTextBodyAdapter);
     }
 }
