@@ -87,15 +87,10 @@
                 <!--android:textSize="@dimen/detail_body_text_size"-->
                 <!--android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />-->
                 <!--<include layout="@layout/article_body_for_recyclerview" />-->
-                <FrameLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_body"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_body"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </FrameLayout>
+                    android:layout_height="wrap_content" />
             </com.example.xyzreader.ui.MaxWidthLinearLayout>
         </FrameLayout>
     </com.example.xyzreader.ui.ObservableScrollView>

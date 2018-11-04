@@ -35,8 +35,8 @@ public class TextParagraphAdapter extends RecyclerView.Adapter<TextParagraphAdap
     @Override
     public void onBindViewHolder(@NonNull TextParagraphViewHolder textParagraphViewHolder, int i) {
         if(mTextBody[i] == null) return;
-//        textParagraphViewHolder.mTextView.setTypeface(Typeface.createFromAsset(mContext.getResources().getAssets(),
-//                "Rosario-Regular.ttf"));
+        textParagraphViewHolder.mTextView.setTypeface(Typeface.createFromAsset(mContext.getResources().getAssets(),
+                "Rosario-Regular.ttf"));
         textParagraphViewHolder.mTextView.setText(mTextBody[i]);
     }
 
