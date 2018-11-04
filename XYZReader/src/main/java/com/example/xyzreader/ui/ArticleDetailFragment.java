@@ -161,6 +161,7 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         bindViews();
+        // TODO instantiate recyclerView and textAdapter
         instantiateBodyTextHelper();
         updateStatusBar();
         return mRootView;
@@ -214,9 +215,6 @@ public class ArticleDetailFragment extends Fragment implements
         TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
-        // TODO what do to
-//        TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
-//        bodyView.setTypeface(Typeface.createFromAsset(getResources().getAssets(), "Rosario-Regular.ttf"));
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -242,13 +240,8 @@ public class ArticleDetailFragment extends Fragment implements
                                 + "</font>"));
 
             }
-            // TODO create recyclerView for the text to be show
+            // TODO add string to Adapter
             setBodyTextAdapter();
-            // TODO replace with recyclerView
-            // TODO what do to
-//            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
-//                    .substring(0,1000)
-//                    .replaceAll("(\r\n|\n)", "<br />")), TextView.BufferType.SPANNABLE);
             ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
@@ -273,8 +266,6 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
             bylineView.setText("N/A" );
-            // TODO what do to
-//            bodyView.setText("N/A");
         }
     }
 
