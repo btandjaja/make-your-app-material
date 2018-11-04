@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
@@ -320,11 +321,12 @@ public class ArticleDetailFragment extends Fragment implements
 
     private void instantiateBodyTextHelper() {
         mRecyclerViewTextBody = mRootView.findViewById(R.id.rv_body);
+        mRecyclerViewTextBody.setLayoutManager(new LinearLayoutManager(getContext()));
         mTextBodyAdapter = new TextParagraphAdapter(getContext());
+        mRecyclerViewTextBody.setAdapter(mTextBodyAdapter);
     }
 
     private void setBodyTextAdapter() {
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
-        mRecyclerViewTextBody.setAdapter(mTextBodyAdapter);
     }
 }
