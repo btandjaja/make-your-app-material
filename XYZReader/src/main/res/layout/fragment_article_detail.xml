@@ -3,18 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.xyzreader.ui.DrawInsetsFrameLayout
-        android:id="@+id/draw_insets_frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<com.example.xyzreader.ui.DrawInsetsFrameLayout-->
+        <!--android:id="@+id/draw_insets_frame_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-        <!--replacing com.example.xyzreader.ui.ObservableScrollView-->
-        <android.support.v4.widget.NestedScrollView
+        <com.example.xyzreader.ui.ObservableScrollView
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.design.widget.CoordinatorLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -78,14 +77,17 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/ltgray" />
                     </LinearLayout>
-
+                    <android.support.design.widget.CoordinatorLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rv_body"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+                    </android.support.design.widget.CoordinatorLayout>
                 </com.example.xyzreader.ui.MaxWidthLinearLayout>
-            </android.support.design.widget.CoordinatorLayout>
-        </android.support.v4.widget.NestedScrollView>
+            </FrameLayout>
+        </com.example.xyzreader.ui.ObservableScrollView>
 
         <ImageButton
             android:id="@+id/share_fab"
@@ -100,5 +102,5 @@
             android:src="@drawable/ic_share"
             android:stateListAnimator="@anim/fab_state_list_anim" />
 
-    </com.example.xyzreader.ui.DrawInsetsFrameLayout>
+    <!--</com.example.xyzreader.ui.DrawInsetsFrameLayout>-->
 </android.support.design.widget.CoordinatorLayout>
