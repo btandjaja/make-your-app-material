@@ -22,8 +22,6 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.text.Spannable;
-import android.text.Spanned;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -62,7 +60,6 @@ public class ArticleDetailFragment extends Fragment implements
     // TODO check
     private RecyclerView mRecyclerViewTextBody;
     private TextParagraphAdapter mTextBodyAdapter;
-    private String[] mTextBodyString;
 
     private int mTopInset;
     private View mPhotoContainerView;
@@ -135,17 +132,17 @@ public class ArticleDetailFragment extends Fragment implements
 //            }
 //        });
 
-        mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
-        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-            @Override
-            public void onScrollChanged() {
-                mScrollY = mScrollView.getScrollY();
-                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-                //TODO needed for DrawInsetFrameLayout
+//        mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
+//        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
+//            @Override
+//            public void onScrollChanged() {
+//                mScrollY = mScrollView.getScrollY();
+//                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
+//                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
+//                //TODO needed for DrawInsetFrameLayout
 //                updateStatusBar();
-            }
-        });
+//            }
+//        });
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
@@ -167,7 +164,7 @@ public class ArticleDetailFragment extends Fragment implements
         instantiateBodyTextHelper();
 
         //TODO needed for DrawInsetFrameLayout
-//        updateStatusBar();
+        updateStatusBar();
         return mRootView;
     }
 
@@ -184,7 +181,7 @@ public class ArticleDetailFragment extends Fragment implements
                     (int) (Color.blue(mMutedColor) * 0.9));
         }
         mStatusBarColorDrawable.setColor(color);
-        mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
+//        mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
     }
 
     static float progress(float v, float min, float max) {
@@ -259,7 +256,7 @@ public class ArticleDetailFragment extends Fragment implements
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
                                 //TODO needed for DrawInsetFrameLayout
-//                                updateStatusBar();
+                                updateStatusBar();
                             }
                         }
 
