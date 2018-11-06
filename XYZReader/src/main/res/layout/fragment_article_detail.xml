@@ -6,15 +6,6 @@
     tools:ignore="RtlHardcoded"
     android:fitsSystemWindows="true">
 
-    <!--<com.example.xyzreader.ui.DrawInsetsFrameLayout-->
-    <!--android:id="@+id/draw_insets_frame_layout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <!--<com.example.xyzreader.ui.ObservableScrollView-->
-    <!--android:id="@+id/scrollview"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -97,13 +88,8 @@
                             android:textColor="@color/ltgray" />
                     </LinearLayout>
 
-                    <!--<android.support.v7.widget.RecyclerView-->
-                    <!--android:id="@+id/rv_body"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content" />-->
                 </com.example.xyzreader.ui.MaxWidthLinearLayout>
             </FrameLayout>
-            <!--</com.example.xyzreader.ui.ObservableScrollView>-->
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -126,5 +112,4 @@
         android:src="@drawable/ic_share"
         android:stateListAnimator="@anim/fab_state_list_anim" />
 
-    <!--</com.example.xyzreader.ui.DrawInsetsFrameLayout>-->
 </android.support.design.widget.CoordinatorLayout>
