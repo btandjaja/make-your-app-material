@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,7 +36,6 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
-import static android.support.v4.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
 
 /**
  * A fragment representing a single Article detail screen. This fragment is
@@ -45,7 +43,7 @@ import static android.support.v4.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
  * tablets) or a {@link ArticleDetailActivity} on handsets.
  */
 public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor>, AppBarLayout.OnOffsetChangedListener  {
+        LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
@@ -61,8 +59,6 @@ public class ArticleDetailFragment extends Fragment implements
     // TODO check
     private RecyclerView mRecyclerViewTextBody;
     private TextParagraphAdapter mTextBodyAdapter;
-    private AppBarLayout mAppBarLayout;
-    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
 
     private int mTopInset;
     private View mPhotoContainerView;
@@ -125,34 +121,9 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-        //TODO needed for DrawInsetFrameLayout
-//        mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
-//                mRootView.findViewById(R.id.draw_insets_frame_layout);
-//        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-//            @Override
-//            public void onInsetsChanged(Rect insets) {
-//                mTopInset = insets.top;
-//            }
-//        });
-
-//        mScrollView = (ObservableScrollView) mRootView.findViewById(R.id.scrollview);
-//        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-//            @Override
-//            public void onScrollChanged() {
-//                mScrollY = mScrollView.getScrollY();
-//                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-//                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-//                //TODO needed for DrawInsetFrameLayout
-//                updateStatusBar();
-//            }
-//        });
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-
-        // TODO find AppBarLayout
-        mAppBarLayout = mRootView.findViewById(R.id.appBar);
-        mAppBarLayout.addOnOffsetChangedListener(this);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -188,7 +159,6 @@ public class ArticleDetailFragment extends Fragment implements
                     (int) (Color.blue(mMutedColor) * 0.9));
         }
         mStatusBarColorDrawable.setColor(color);
-//        mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
     }
 
     static float progress(float v, float min, float max) {
@@ -331,19 +301,4 @@ public class ArticleDetailFragment extends Fragment implements
     private void setBodyTextAdapter() {
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
     }
-
-    @Override
-    public void onOffsetChanged(AppBarLayout appBarLayout, int offSet) {
-        int maxScroll = appBarLayout.getTotalScrollRange();
-        float percent = (float) Math.abs(offSet) / (float) maxScroll;
-
-//        handleAlphaOnTitle(percent);
-//        handleToolbarTitleVisibility(percent);
-    }
-
-//    private void handleAlphaOnTitle(float percent) {
-//        if (percent >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
-//            if (@)
-//        }
-//    }
 }
