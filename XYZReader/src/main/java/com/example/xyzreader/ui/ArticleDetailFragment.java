@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,7 +45,7 @@ import static android.support.v4.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
  * tablets) or a {@link ArticleDetailActivity} on handsets.
  */
 public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>, AppBarLayout.OnOffsetChangedListener  {
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
@@ -60,6 +61,8 @@ public class ArticleDetailFragment extends Fragment implements
     // TODO check
     private RecyclerView mRecyclerViewTextBody;
     private TextParagraphAdapter mTextBodyAdapter;
+    private AppBarLayout mAppBarLayout;
+    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
 
     private int mTopInset;
     private View mPhotoContainerView;
@@ -146,6 +149,10 @@ public class ArticleDetailFragment extends Fragment implements
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
+
+        // TODO find AppBarLayout
+        mAppBarLayout = mRootView.findViewById(R.id.appBar);
+        mAppBarLayout.addOnOffsetChangedListener(this);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -313,6 +320,7 @@ public class ArticleDetailFragment extends Fragment implements
                 : mPhotoView.getHeight() - mScrollY;
     }
 
+
     private void instantiateBodyTextHelper() {
         mRecyclerViewTextBody = mRootView.findViewById(R.id.rv_body);
         mRecyclerViewTextBody.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -323,4 +331,19 @@ public class ArticleDetailFragment extends Fragment implements
     private void setBodyTextAdapter() {
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
     }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int offSet) {
+        int maxScroll = appBarLayout.getTotalScrollRange();
+        float percent = (float) Math.abs(offSet) / (float) maxScroll;
+
+//        handleAlphaOnTitle(percent);
+//        handleToolbarTitleVisibility(percent);
+    }
+
+//    private void handleAlphaOnTitle(float percent) {
+//        if (percent >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
+//            if (@)
+//        }
+//    }
 }
