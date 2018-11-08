@@ -10,11 +10,10 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        >
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/detail_appbar"
+            android:id="@+id/detail_collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
@@ -34,25 +33,24 @@
                 android:layout_height="wrap_content">
 
 
-
                 <!--<FrameLayout-->
 
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:background="@color/photo_placeholder">-->
-                    <!--suppress AndroidLintContentDescription -->
-                    <!--<ImageView-->
-                        <!--android:id="@+id/photo"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:fitsSystemWindows="true"-->
-                        <!--android:scaleType="centerCrop"-->
-                        <!--tools:contentDescription="@null" />-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/photo_placeholder">-->
+                <!--suppress AndroidLintContentDescription -->
+                <!--<ImageView-->
+                <!--android:id="@+id/photo"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:fitsSystemWindows="true"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--tools:contentDescription="@null" />-->
 
-                    <!--<View-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="112dp"-->
-                    <!--android:background="@drawable/photo_background_protection" />-->
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="112dp"-->
+                <!--android:background="@drawable/photo_background_protection" />-->
 
                 <!--</FrameLayout>-->
 
@@ -98,9 +96,15 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/ltgray" />
                     </LinearLayout>
-
                 </com.example.xyzreader.ui.MaxWidthLinearLayout>
             </FrameLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                android:visibility="invisible" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -111,18 +115,19 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <!--<ImageButton-->
-        <!--android:id="@+id/share_fab"-->
-        <!--android:layout_width="56dp"-->
-        <!--android:layout_height="56dp"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_marginRight="@dimen/fab_margin"-->
-        <!--android:layout_marginBottom="@dimen/fab_margin"-->
-        <!--android:background="@drawable/add_fab_background"-->
-        <!--android:contentDescription="@string/action_share"-->
-        <!--android:elevation="@dimen/fab_elevation"-->
-        <!--android:src="@drawable/ic_share"-->
-        <!--android:stateListAnimator="@anim/fab_state_list_anim"-->
-         <!--/>-->
+    <!--android:id="@+id/share_fab"-->
+    <!--android:layout_width="56dp"-->
+    <!--android:layout_height="56dp"-->
+    <!--android:layout_gravity="bottom|end"-->
+    <!--android:layout_marginRight="@dimen/fab_margin"-->
+    <!--android:layout_marginBottom="@dimen/fab_margin"-->
+    <!--android:background="@drawable/add_fab_background"-->
+    <!--android:contentDescription="@string/action_share"-->
+    <!--android:elevation="@dimen/fab_elevation"-->
+    <!--android:src="@drawable/ic_share"-->
+    <!--android:stateListAnimator="@anim/fab_state_list_anim"-->
+    <!--/>-->
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
@@ -132,7 +137,7 @@
         android:contentDescription="@string/action_share"
         android:elevation="@dimen/fab_elevation"
         android:src="@drawable/ic_share"
-        app:layout_anchor="@id/detail_appbar"
+        app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>

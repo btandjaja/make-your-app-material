@@ -12,6 +12,7 @@
     <dimen name="card_text_padding_16dp">16dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="image_final_width">32dp</dimen>
 
     <integer name="max_lines_2">2</integer>
     <integer name="max_lines_4">4</integer>

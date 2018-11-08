@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,8 +30,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -43,7 +48,9 @@ import com.example.xyzreader.data.ArticleLoader;
  * tablets) or a {@link ArticleDetailActivity} on handsets.
  */
 public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>, AppBarLayout.OnOffsetChangedListener {
+    // TODO remove
+//    , AppBarLayout.OnOffsetChangedListener
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
@@ -56,9 +63,19 @@ public class ArticleDetailFragment extends Fragment implements
     private ObservableScrollView mScrollView;
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
-    // TODO check
+    // TODO Added
     private RecyclerView mRecyclerViewTextBody;
     private TextParagraphAdapter mTextBodyAdapter;
+    private Toolbar mToolbar;
+    private AppBarLayout mAppBar;
+    private TextView mTitle;
+    private LinearLayout mLinearLayout;
+    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
+    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
+    private static final int ALPHA_ANIMATIONS_DURATION              = 200;
+    private boolean mHideToolbar = false;
+    private boolean mIsTheTitleVisible          = false;
+    private boolean mIsTheTitleContainerVisible = true;
 
     private int mTopInset;
     private View mPhotoContainerView;
@@ -139,14 +156,14 @@ public class ArticleDetailFragment extends Fragment implements
 
         bindViews();
         // TODO instantiate recyclerView and textAdapter
-        instantiateBodyTextHelper();
+//        instantiateBodyTextHelper();
+        // TODO remove
+        mAppBar.addOnOffsetChangedListener(this);
 
-        //TODO needed for DrawInsetFrameLayout
         updateStatusBar();
         return mRootView;
     }
 
-    //TODO needed for DrawInsetFrameLayout
     private void updateStatusBar() {
         int color = 0;
         if (mPhotoView != null && mTopInset != 0 && mScrollY > 0) {
@@ -195,11 +212,21 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
 
+        //TODO add new views
+        mAppBar = mRootView.findViewById(R.id.appBar);
+//        mTitle = mRootView.findViewById(R.id.tv_toolbar_title);
+//        mTitle.setText(titleView.toString());
+//        mLinearLayout = mRootView.findViewById(R.id.meta_bar);
+        mToolbar = mRootView.findViewById(R.id.toolbar_title);
+        instantiateBodyTextHelper();
+
         if (mCursor != null) {
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
+            String title = mCursor.getString(ArticleLoader.Query.TITLE);
+            titleView.setText(title);
+            mToolbar.setTitle(title);
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
                 bylineView.setText(Html.fromHtml(
@@ -232,7 +259,6 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
-                                //TODO needed for DrawInsetFrameLayout
                                 updateStatusBar();
                             }
                         }
@@ -300,5 +326,17 @@ public class ArticleDetailFragment extends Fragment implements
 
     private void setBodyTextAdapter() {
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
+        int maxScroll = appBarLayout.getTotalScrollRange();
+        float percentage = (float) Math.abs(offset) / (float) maxScroll;
+        if (percentage == PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && mHideToolbar) {
+            mToolbar.setVisibility(View.VISIBLE);
+        } else if (percentage < PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && !mHideToolbar) {
+            mToolbar.setVisibility(View.INVISIBLE);
+        }
+        mHideToolbar = !mHideToolbar;
     }
 }
