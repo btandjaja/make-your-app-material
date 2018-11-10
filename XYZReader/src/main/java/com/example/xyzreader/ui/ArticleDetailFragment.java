@@ -41,6 +41,9 @@ import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 /**
  * A fragment representing a single Article detail screen. This fragment is
@@ -64,12 +67,12 @@ public class ArticleDetailFragment extends Fragment implements
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
     // TODO Added
-    private RecyclerView mRecyclerViewTextBody;
-    private TextParagraphAdapter mTextBodyAdapter;
-    private Toolbar mToolbar;
-    private AppBarLayout mAppBar;
+    @BindView(R.id.rv_body) RecyclerView mRecyclerViewTextBody;
+    @BindView(R.id.toolbar_title) Toolbar mToolbar;
+    @BindView(R.id.appBar) AppBarLayout mAppBar;
     private TextView mTitle;
     private LinearLayout mLinearLayout;
+    private TextParagraphAdapter mTextBodyAdapter;
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
     private static final int ALPHA_ANIMATIONS_DURATION              = 200;
@@ -78,8 +81,8 @@ public class ArticleDetailFragment extends Fragment implements
     private boolean mIsTheTitleContainerVisible = true;
 
     private int mTopInset;
-    private View mPhotoContainerView;
-    private ImageView mPhotoView;
+    @BindView(R.id.photo_container) View mPhotoContainerView;
+    @BindView(R.id.photo) ImageView mPhotoView;
     private int mScrollY;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
@@ -138,9 +141,11 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-
-        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
+        // TODO Butterknife binding
+        ButterKnife.bind(this, mRootView);
+        // TODO remove
+//        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+//        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -212,13 +217,8 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
 
-        //TODO add new views
-        mAppBar = mRootView.findViewById(R.id.appBar);
-//        mTitle = mRootView.findViewById(R.id.tv_toolbar_title);
-//        mTitle.setText(titleView.toString());
-//        mLinearLayout = mRootView.findViewById(R.id.meta_bar);
-        mToolbar = mRootView.findViewById(R.id.toolbar_title);
-        instantiateBodyTextHelper();
+        // TODO recyclerview set layout and create adapter for recyclerview
+        articleBodyRecyclerViewAndAdapter();
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
@@ -318,8 +318,7 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
 
-    private void instantiateBodyTextHelper() {
-        mRecyclerViewTextBody = mRootView.findViewById(R.id.rv_body);
+    private void articleBodyRecyclerViewAndAdapter() {
         mRecyclerViewTextBody.setLayoutManager(new LinearLayoutManager(getContext()));
         mTextBodyAdapter = new TextParagraphAdapter(getContext());
         mRecyclerViewTextBody.setAdapter(mTextBodyAdapter);
