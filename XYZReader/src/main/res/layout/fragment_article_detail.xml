@@ -15,7 +15,7 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/detail_collapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -29,6 +29,7 @@
 
             <FrameLayout
                 android:id="@+id/photo_container"
+                android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -60,7 +61,7 @@
                             style="?android:attr/textAppearanceLarge"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-condensed"
+                            android:fontFamily="sans-serif"
                             android:lineSpacingMultiplier="0.9"
                             android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
                             android:textColor="#fff"
@@ -72,7 +73,9 @@
                             style="?android:attr/textAppearanceSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/ltgray" />
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/ltgray"
+                            android:textStyle="normal" />
                     </LinearLayout>
                 </com.example.xyzreader.ui.MaxWidthLinearLayout>
             </FrameLayout>
@@ -81,8 +84,11 @@
                 android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:fitsSystemWindows="true"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
                 app:layout_collapseMode="pin"
-                android:visibility="invisible" />
+                />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

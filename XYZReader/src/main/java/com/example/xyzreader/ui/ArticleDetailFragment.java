@@ -226,6 +226,7 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.animate().alpha(1);
             String title = mCursor.getString(ArticleLoader.Query.TITLE);
             titleView.setText(title);
+            // TODO reset
             mToolbar.setTitle(title);
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
@@ -333,9 +334,11 @@ public class ArticleDetailFragment extends Fragment implements
         int maxScroll = appBarLayout.getTotalScrollRange();
         float percentage = (float) Math.abs(offset) / (float) maxScroll;
         if (percentage == PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && mHideToolbar) {
-            mToolbar.setVisibility(View.VISIBLE);
+            mToolbar.setVisibility(View.GONE);
+//            mPhotoContainerView.setVisibility(View.VISIBLE);
         } else if (percentage < PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && !mHideToolbar) {
-            mToolbar.setVisibility(View.INVISIBLE);
+            mToolbar.setVisibility(View.GONE);
+//            mPhotoContainerView.setVisibility(View.GONE);
         }
         mHideToolbar = !mHideToolbar;
     }
