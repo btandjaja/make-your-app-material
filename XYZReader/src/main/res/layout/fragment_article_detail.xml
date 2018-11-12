@@ -3,33 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:ignore="RtlHardcoded">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/detail_collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:id="@+id/photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 tools:contentDescription="@null" />
 
             <FrameLayout
                 android:id="@+id/photo_container"
-                android:fitsSystemWindows="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -73,6 +70,7 @@
                             style="?android:attr/textAppearanceSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fitsSystemWindows="true"
                             android:fontFamily="sans-serif"
                             android:textColor="@color/ltgray"
                             android:textStyle="normal" />
@@ -80,15 +78,14 @@
                 </com.example.xyzreader.ui.MaxWidthLinearLayout>
             </FrameLayout>
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_title"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:fitsSystemWindows="true"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                app:layout_collapseMode="pin"
-                />
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbar_title"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--android:fitsSystemWindows="true"-->
+                <!--android:fontFamily="sans-serif"-->
+                <!--android:textStyle="bold"-->
+                <!--app:layout_collapseMode="pin" />-->
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -96,6 +93,7 @@
         android:id="@+id/rv_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <!--<ImageButton-->

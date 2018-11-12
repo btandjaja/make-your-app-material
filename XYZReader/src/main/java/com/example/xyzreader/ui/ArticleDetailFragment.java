@@ -1,5 +1,6 @@
 package com.example.xyzreader.ui;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -51,7 +52,7 @@ import butterknife.ButterKnife;
  * tablets) or a {@link ArticleDetailActivity} on handsets.
  */
 public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor>, AppBarLayout.OnOffsetChangedListener {
+        LoaderManager.LoaderCallbacks<Cursor>{
     // TODO remove
 //    , AppBarLayout.OnOffsetChangedListener
     private static final String TAG = "ArticleDetailFragment";
@@ -68,8 +69,8 @@ public class ArticleDetailFragment extends Fragment implements
     private ColorDrawable mStatusBarColorDrawable;
     // TODO Added
     @BindView(R.id.rv_body) RecyclerView mRecyclerViewTextBody;
-    @BindView(R.id.toolbar_title) Toolbar mToolbar;
-    @BindView(R.id.appBar) AppBarLayout mAppBar;
+//    @BindView(R.id.toolbar_title) Toolbar mToolbar;
+//    @BindView(R.id.appBar) AppBarLayout mAppBar;
     private TextView mTitle;
     private LinearLayout mLinearLayout;
     private TextParagraphAdapter mTextBodyAdapter;
@@ -159,11 +160,14 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
+        // TODO recyclerview set layout and create adapter for recyclerview
+        articleBodyRecyclerViewAndAdapter();
+
         bindViews();
         // TODO instantiate recyclerView and textAdapter
 //        instantiateBodyTextHelper();
         // TODO remove
-        mAppBar.addOnOffsetChangedListener(this);
+//        mAppBar.addOnOffsetChangedListener(this);
 
         updateStatusBar();
         return mRootView;
@@ -217,9 +221,6 @@ public class ArticleDetailFragment extends Fragment implements
         TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
         bylineView.setMovementMethod(new LinkMovementMethod());
 
-        // TODO recyclerview set layout and create adapter for recyclerview
-        articleBodyRecyclerViewAndAdapter();
-
         if (mCursor != null) {
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
@@ -227,7 +228,7 @@ public class ArticleDetailFragment extends Fragment implements
             String title = mCursor.getString(ArticleLoader.Query.TITLE);
             titleView.setText(title);
             // TODO reset
-            mToolbar.setTitle(title);
+//            mToolbar.setTitle(title);
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
                 bylineView.setText(Html.fromHtml(
@@ -328,17 +329,17 @@ public class ArticleDetailFragment extends Fragment implements
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
     }
 
-    @Override
-    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
-        int maxScroll = appBarLayout.getTotalScrollRange();
-        float percentage = (float) Math.abs(offset) / (float) maxScroll;
-        if (percentage == PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && mHideToolbar) {
-            mToolbar.setVisibility(View.GONE);
+//    @Override
+//    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
+//        int maxScroll = appBarLayout.getTotalScrollRange();
+//        float percentage = (float) Math.abs(offset) / (float) maxScroll;
+//        if (percentage == PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && mHideToolbar) {
+//            mToolbar.setVisibility(View.GONE);
 //            mPhotoContainerView.setVisibility(View.VISIBLE);
-        } else if (percentage < PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && !mHideToolbar) {
-            mToolbar.setVisibility(View.GONE);
+//        } else if (percentage < PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && !mHideToolbar) {
+//            mToolbar.setVisibility(View.GONE);
 //            mPhotoContainerView.setVisibility(View.GONE);
-        }
-        mHideToolbar = !mHideToolbar;
-    }
+//        }
+//        mHideToolbar = !mHideToolbar;
+//    }
 }
