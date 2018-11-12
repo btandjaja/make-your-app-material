@@ -1,6 +1,5 @@
 package com.example.xyzreader.ui;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -8,8 +7,6 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
 import java.text.ParseException;
@@ -18,8 +15,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,9 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -67,19 +60,9 @@ public class ArticleDetailFragment extends Fragment implements
     private ObservableScrollView mScrollView;
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
-    // TODO Added
+    // TODO Added declarations
     @BindView(R.id.rv_body) RecyclerView mRecyclerViewTextBody;
-//    @BindView(R.id.toolbar_title) Toolbar mToolbar;
-//    @BindView(R.id.appBar) AppBarLayout mAppBar;
-    private TextView mTitle;
-    private LinearLayout mLinearLayout;
     private TextParagraphAdapter mTextBodyAdapter;
-    private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
-    private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
-    private static final int ALPHA_ANIMATIONS_DURATION              = 200;
-    private boolean mHideToolbar = false;
-    private boolean mIsTheTitleVisible          = false;
-    private boolean mIsTheTitleContainerVisible = true;
 
     private int mTopInset;
     @BindView(R.id.photo_container) View mPhotoContainerView;
@@ -144,10 +127,6 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         // TODO Butterknife binding
         ButterKnife.bind(this, mRootView);
-        // TODO remove
-//        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-//        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
@@ -164,10 +143,6 @@ public class ArticleDetailFragment extends Fragment implements
         articleBodyRecyclerViewAndAdapter();
 
         bindViews();
-        // TODO instantiate recyclerView and textAdapter
-//        instantiateBodyTextHelper();
-        // TODO remove
-//        mAppBar.addOnOffsetChangedListener(this);
 
         updateStatusBar();
         return mRootView;
@@ -227,8 +202,6 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.animate().alpha(1);
             String title = mCursor.getString(ArticleLoader.Query.TITLE);
             titleView.setText(title);
-            // TODO reset
-//            mToolbar.setTitle(title);
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
                 bylineView.setText(Html.fromHtml(
@@ -328,18 +301,4 @@ public class ArticleDetailFragment extends Fragment implements
     private void setBodyTextAdapter() {
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
     }
-
-//    @Override
-//    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
-//        int maxScroll = appBarLayout.getTotalScrollRange();
-//        float percentage = (float) Math.abs(offset) / (float) maxScroll;
-//        if (percentage == PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && mHideToolbar) {
-//            mToolbar.setVisibility(View.GONE);
-//            mPhotoContainerView.setVisibility(View.VISIBLE);
-//        } else if (percentage < PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR && !mHideToolbar) {
-//            mToolbar.setVisibility(View.GONE);
-//            mPhotoContainerView.setVisibility(View.GONE);
-//        }
-//        mHideToolbar = !mHideToolbar;
-//    }
 }

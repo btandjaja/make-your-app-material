@@ -23,9 +23,8 @@
         <item name="colorAccent">@color/theme_accent</item>
     </style>
 
-    <!-- Hide the Status Bar on Android 4.0 and Lower -->
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:theme">@android:style/Theme.Holo.NoActionBar.Fullscreen</item>
+        
     </style>
 
     <style name="Theme.Bacon.Detail">

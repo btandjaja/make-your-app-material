@@ -1,6 +1,5 @@
 package com.example.xyzreader.ui;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.LoaderManager;
@@ -107,13 +106,6 @@ public class ArticleDetailActivity extends AppCompatActivity
                 mSelectedItemId = mStartId;
             }
         }
-
-//        // TODO hide status bar
-//        View decorView = getWindow().getDecorView();
-//        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-//        decorView.setSystemUiVisibility(uiOptions);
-//        ActionBar actionBar = getActionBar();
-//        if (actionBar != null) actionBar.hide();
     }
 
     @Override
