@@ -21,6 +21,9 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
  */
@@ -34,14 +37,19 @@ public class ArticleDetailActivity extends AppCompatActivity
     private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
     private int mTopInset;
 
+    // TODO remove
+//    @BindView(R.id.pager) ViewPager mPager;
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
+//    @BindView(R.id.up_container) View mUpButtonContainer;
     private View mUpButtonContainer;
+//    @BindView(R.id.action_up) View mUpButton;
     private View mUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
@@ -52,6 +60,7 @@ public class ArticleDetailActivity extends AppCompatActivity
         getLoaderManager().initLoader(0, null, this);
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
+        // TODO can't use @BindView why?
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
@@ -77,9 +86,10 @@ public class ArticleDetailActivity extends AppCompatActivity
             }
         });
 
+        // TODO can't use @BindView why?
         mUpButtonContainer = findViewById(R.id.up_container);
-
         mUpButton = findViewById(R.id.action_up);
+
         mUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

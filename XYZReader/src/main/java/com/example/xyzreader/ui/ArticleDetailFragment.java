@@ -46,8 +46,6 @@ import butterknife.ButterKnife;
  */
 public class ArticleDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor>{
-    // TODO remove
-//    , AppBarLayout.OnOffsetChangedListener
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
