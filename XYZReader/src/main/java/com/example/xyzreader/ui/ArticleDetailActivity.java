@@ -42,15 +42,16 @@ public class ArticleDetailActivity extends AppCompatActivity
 
     private ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
-    @BindView(R.id.detail_activity_toolbar) Toolbar mToolBar;
+//    @BindView(R.id.detail_activity_toolbar) Toolbar mToolBar;
     // TODO remove
 //    private View mUpButtonContainer;
 //    private View mUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
@@ -59,16 +60,14 @@ public class ArticleDetailActivity extends AppCompatActivity
         setContentView(R.layout.activity_article_detail);
         ButterKnife.bind(this);
 
-
         // TODO add toolbar back button
-        setSupportActionBar(mToolBar);
-        ActionBar ab = getSupportActionBar();
-        // TODO how to remove logo
-        if (ab != null) {
-            ab.setDisplayHomeAsUpEnabled(true);
-            ab.setDisplayUseLogoEnabled(false);
-
-        }
+//        setSupportActionBar(mToolBar);
+//        ActionBar ab = getSupportActionBar();
+//        if (ab != null) {
+//            ab.setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setTitle("");
+//
+//        }
 
 
 

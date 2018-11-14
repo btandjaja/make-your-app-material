@@ -19,6 +19,7 @@ import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
@@ -59,6 +60,7 @@ public class ArticleDetailFragment extends Fragment implements
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
     // TODO Added declarations
+    @BindView(R.id.fragment_toolbar) Toolbar mToolbar;
     @BindView(R.id.rv_body) RecyclerView mRecyclerViewTextBody;
     private TextParagraphAdapter mTextBodyAdapter;
 
@@ -125,6 +127,8 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         // TODO Butterknife binding
         ButterKnife.bind(this, mRootView);
+        // TODO toolbar
+        setToolbar();
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
@@ -298,5 +302,12 @@ public class ArticleDetailFragment extends Fragment implements
 
     private void setBodyTextAdapter() {
         mTextBodyAdapter.setTextBody(TextSplitter.split_text(mCursor.getString(ArticleLoader.Query.BODY)));
+    }
+
+    private void setToolbar() {
+        getActivityCast().setSupportActionBar(mToolbar);
+        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActivityCast().getSupportActionBar().setDisplayUseLogoEnabled(false);
+        getActivityCast().getSupportActionBar().setTitle("");
     }
 }

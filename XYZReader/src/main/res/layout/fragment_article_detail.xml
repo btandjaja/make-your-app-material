@@ -19,6 +19,12 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/fragment_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
             <ImageView
                 android:id="@+id/photo"
                 android:layout_width="match_parent"
@@ -96,20 +102,6 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <!--<ImageButton-->
-    <!--android:id="@+id/share_fab"-->
-    <!--android:layout_width="56dp"-->
-    <!--android:layout_height="56dp"-->
-    <!--android:layout_gravity="bottom|end"-->
-    <!--android:layout_marginRight="@dimen/fab_margin"-->
-    <!--android:layout_marginBottom="@dimen/fab_margin"-->
-    <!--android:background="@drawable/add_fab_background"-->
-    <!--android:contentDescription="@string/action_share"-->
-    <!--android:elevation="@dimen/fab_elevation"-->
-    <!--android:src="@drawable/ic_share"-->
-    <!--android:stateListAnimator="@anim/fab_state_list_anim"-->
-    <!--/>-->
 
 
     <android.support.design.widget.FloatingActionButton
