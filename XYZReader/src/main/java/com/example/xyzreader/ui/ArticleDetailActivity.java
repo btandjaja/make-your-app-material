@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowInsets;
+import android.view.WindowManager;
 
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
@@ -40,12 +41,8 @@ public class ArticleDetailActivity extends AppCompatActivity
     private int mSelectedItemUpButtonFloor = Integer.MAX_VALUE;
     private int mTopInset;
 
-    private ViewPager mPager;
+    @BindView(R.id.pager) ViewPager mPager;
     private MyPagerAdapter mPagerAdapter;
-//    @BindView(R.id.detail_activity_toolbar) Toolbar mToolBar;
-    // TODO remove
-//    private View mUpButtonContainer;
-//    private View mUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,24 +55,12 @@ public class ArticleDetailActivity extends AppCompatActivity
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
         setContentView(R.layout.activity_article_detail);
+        // TODO butterknife binding
         ButterKnife.bind(this);
-
-        // TODO add toolbar back button
-//        setSupportActionBar(mToolBar);
-//        ActionBar ab = getSupportActionBar();
-//        if (ab != null) {
-//            ab.setDisplayHomeAsUpEnabled(true);
-//            getSupportActionBar().setTitle("");
-//
-//        }
-
-
 
         getLoaderManager().initLoader(0, null, this);
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
-        // TODO can't use @BindView why?
-        mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
@@ -167,6 +152,7 @@ public class ArticleDetailActivity extends AppCompatActivity
         }
     }
 
+    // TODO remove
 //    private void updateUpButtonPosition() {
 //        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
 //        mUpButton.setTranslationY(Math.min(mSelectedItemUpButtonFloor - upButtonNormalBottom, 0));
@@ -199,4 +185,6 @@ public class ArticleDetailActivity extends AppCompatActivity
             return (mCursor != null) ? mCursor.getCount() : 0;
         }
     }
+
+
 }

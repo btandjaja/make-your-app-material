@@ -14,8 +14,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +30,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,7 +51,7 @@ import butterknife.ButterKnife;
  * tablets) or a {@link ArticleDetailActivity} on handsets.
  */
 public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor>{
+        LoaderManager.LoaderCallbacks<Cursor> {
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
@@ -60,13 +65,19 @@ public class ArticleDetailFragment extends Fragment implements
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
     // TODO Added declarations
-    @BindView(R.id.fragment_toolbar) Toolbar mToolbar;
-    @BindView(R.id.rv_body) RecyclerView mRecyclerViewTextBody;
+    @BindView(R.id.fragment_toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.rv_body)
+    RecyclerView mRecyclerViewTextBody;
+    @BindView(R.id.appBar)
+    AppBarLayout mAppBar;
     private TextParagraphAdapter mTextBodyAdapter;
 
     private int mTopInset;
-    @BindView(R.id.photo_container) View mPhotoContainerView;
-    @BindView(R.id.photo) ImageView mPhotoView;
+    @BindView(R.id.photo_container)
+    View mPhotoContainerView;
+    @BindView(R.id.photo)
+    ImageView mPhotoView;
     private int mScrollY;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
@@ -75,7 +86,7 @@ public class ArticleDetailFragment extends Fragment implements
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -123,12 +134,10 @@ public class ArticleDetailFragment extends Fragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
         // TODO Butterknife binding
         ButterKnife.bind(this, mRootView);
-        // TODO toolbar
-        setToolbar();
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
@@ -145,7 +154,8 @@ public class ArticleDetailFragment extends Fragment implements
         articleBodyRecyclerViewAndAdapter();
 
         bindViews();
-
+        // TODO toolbar
+        setToolbar();
         updateStatusBar();
         return mRootView;
     }
@@ -219,7 +229,7 @@ public class ArticleDetailFragment extends Fragment implements
                 // If date is before 1902, just show the string
                 bylineView.setText(Html.fromHtml(
                         outputFormat.format(publishedDate) + " by <font color='#ffffff'>"
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)
+                                + mCursor.getString(ArticleLoader.Query.AUTHOR)
                                 + "</font>"));
 
             }
@@ -236,6 +246,13 @@ public class ArticleDetailFragment extends Fragment implements
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
                                 mRootView.findViewById(R.id.meta_bar)
                                         .setBackgroundColor(mMutedColor);
+                                // TODO matching appBar theme (toolbar is part of the appBar)
+                                mAppBar.setBackgroundColor(mMutedColor);
+                                // TODO status bar color
+                                Window window = getActivity().getWindow();
+                                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                                window.setStatusBarColor(mMutedColor);
+                                // TODO question, why is updateStatusBar here? and onCreateView
                                 updateStatusBar();
                             }
                         }
@@ -248,7 +265,7 @@ public class ArticleDetailFragment extends Fragment implements
         } else {
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
-            bylineView.setText("N/A" );
+            bylineView.setText("N/A");
         }
     }
 
@@ -305,9 +322,16 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     private void setToolbar() {
+        // set actionbar to the toolbar
         getActivityCast().setSupportActionBar(mToolbar);
+        // display back button
         getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // remove logo
         getActivityCast().getSupportActionBar().setDisplayUseLogoEnabled(false);
+        // change the back button image
+        getActivityCast().getSupportActionBar().setHomeAsUpIndicator(
+                mRootView.getResources().getDrawable(R.drawable.ic_chevron_left_white_24dp));
+        // remove title
         getActivityCast().getSupportActionBar().setTitle("");
     }
 }
