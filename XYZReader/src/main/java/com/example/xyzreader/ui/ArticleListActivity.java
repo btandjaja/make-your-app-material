@@ -66,10 +66,6 @@ public class ArticleListActivity extends AppCompatActivity implements
         changeStatusBarBackGroundColor();
 
         final View toolbarContainerView = findViewById(R.id.toolbar_container);
-        // TODO remove
-//        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-//        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-//        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         getLoaderManager().initLoader(0, null, this);
 
@@ -203,15 +199,13 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public DynamicHeightNetworkImageView thumbnailView;
-        public TextView titleView;
-        public TextView subtitleView;
+        @BindView(R.id.thumbnail) DynamicHeightNetworkImageView thumbnailView;
+        @BindView(R.id.article_title) TextView titleView;
+        @BindView(R.id.article_subtitle) TextView subtitleView;
 
         public ViewHolder(View view) {
             super(view);
-            thumbnailView = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
-            titleView = (TextView) view.findViewById(R.id.article_title);
-            subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
+            ButterKnife.bind(this, view);
         }
     }
 
