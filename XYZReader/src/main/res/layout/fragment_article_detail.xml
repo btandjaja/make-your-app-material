@@ -8,18 +8,17 @@
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/widthMatchParentHeightWarpContent"
+        android:elevation="@dimen/appBar_elevation"
+        android:fitsSystemWindows="true"
         android:theme="@style/AppBar">
-        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/fragment_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/widthMatchParentHeightWarpContent"
             app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+            app:popupTheme="@style/popupTheme">
 
             <FrameLayout
                 android:id="@+id/photo_container"
@@ -28,15 +27,7 @@
 
                 <LinearLayout
                     android:id="@+id/meta_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
-                    android:background="#333"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/detail_inner_horiz_margin"
-                    android:paddingTop="@dimen/detail_metabar_vert_padding"
-                    android:paddingRight="@dimen/detail_inner_horiz_margin">
+                    style="@style/linearLayout">
 
                     <TextView
                         android:id="@+id/article_title"
@@ -71,7 +62,6 @@
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
-            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
 
             <ImageView
                 android:id="@+id/photo"
@@ -85,16 +75,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.Space
-        android:layout_width="match_parent"
-        android:layout_height="4dp" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:background="@color/theme_accent"
+        android:fitsSystemWindows="true"
+        android:paddingTop="24dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton

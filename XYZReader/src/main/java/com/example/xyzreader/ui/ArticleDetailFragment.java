@@ -17,6 +17,7 @@ import java.util.GregorianCalendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.graphics.Palette;
@@ -71,6 +72,8 @@ public class ArticleDetailFragment extends Fragment implements
     RecyclerView mRecyclerViewTextBody;
     @BindView(R.id.appBar)
     AppBarLayout mAppBar;
+    @BindView(R.id.detail_collapsingToolbar)
+    CollapsingToolbarLayout mCollapsingToolbarLayout;
     private TextParagraphAdapter mTextBodyAdapter;
 
     private int mTopInset;
@@ -252,7 +255,9 @@ public class ArticleDetailFragment extends Fragment implements
                                 Window window = getActivity().getWindow();
                                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                                 window.setStatusBarColor(mMutedColor);
-                                // TODO question, why is updateStatusBar here? and onCreateView
+                                // TODO set matching color when scrolling up
+                                mCollapsingToolbarLayout.setContentScrimColor(mMutedColor);
+                                // TODO question, why is updateStatusBar here? and onCreateView. remove?
                                 updateStatusBar();
                             }
                         }

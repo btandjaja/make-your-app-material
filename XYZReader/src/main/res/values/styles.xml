@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/theme_primary</item>
@@ -23,10 +23,35 @@
         <item name="colorAccent">@color/theme_accent</item>
     </style>
 
+    <!-- detail fragment -->
+    <!-- AppBar-->
     <style name="AppBar" parent="AppTheme">
         <item name="android:elevation">@dimen/appBar_elevation</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>
+
+    <style name="widthMatchParentHeightWarpContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- fragment toolBar popupTheme-->
+    <style name="popupTheme" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <!-- linearlayout -->
+    <style name="linearLayout" parent="widthMatchParentHeightWarpContent">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/detail_metabar_vert_padding</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingLeft">@dimen/detail_inner_horiz_margin</item>
+        <item name="android:paddingTop">@dimen/detail_metabar_vert_padding</item>
+        <item name="android:paddingRight">@dimen/detail_inner_horiz_margin</item>
+    </style>
+
+    <!-- textView title -->
+    <!--<style name="tvTitle" parent="widthMatchParentHeightWarpContent">-->
+
+    <!--</style>-->
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         
