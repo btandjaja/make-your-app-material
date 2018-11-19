@@ -39,4 +39,9 @@
 
     </style>
 
+    <style name="toolbar_article_list" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!--<item name="android:windowAllowEnterTransitionOverlap">false</item>-->
+        <!--<item name="android:windowEnterTransition">@transition/detail_enter</item>-->
+    </style>
+
 </resources>

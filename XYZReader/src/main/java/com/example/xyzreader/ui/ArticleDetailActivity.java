@@ -144,6 +144,18 @@ public class ArticleDetailActivity extends AppCompatActivity
         mPagerAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
+    }
+
     public void onUpButtonFloorChanged(long itemId, ArticleDetailFragment fragment) {
         if (itemId == mSelectedItemId) {
             mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
