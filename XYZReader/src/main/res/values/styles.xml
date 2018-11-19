@@ -23,6 +23,11 @@
         <item name="colorAccent">@color/theme_accent</item>
     </style>
 
+    <style name="AppBar" parent="AppTheme">
+        <item name="android:elevation">@dimen/appBar_elevation</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         
     </style>
