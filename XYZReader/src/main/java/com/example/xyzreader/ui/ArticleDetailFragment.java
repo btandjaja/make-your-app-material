@@ -157,7 +157,6 @@ public class ArticleDetailFragment extends Fragment implements
         // TODO toolbar
         setToolbar();
         updateStatusBar();
-        upButtonListener();
         return mRootView;
     }
 
@@ -311,7 +310,6 @@ public class ArticleDetailFragment extends Fragment implements
                 : mPhotoView.getHeight() - mScrollY;
     }
 
-
     private void articleBodyRecyclerViewAndAdapter() {
         mRecyclerViewTextBody.setLayoutManager(new LinearLayoutManager(getContext()));
         mTextBodyAdapter = new TextParagraphAdapter(getContext());
@@ -334,14 +332,5 @@ public class ArticleDetailFragment extends Fragment implements
                 mRootView.getResources().getDrawable(R.drawable.ic_chevron_left_white_24dp));
         // remove title
         getActivityCast().getSupportActionBar().setTitle("");
-    }
-
-    private void upButtonListener() {
-        getActivityCast().getSupportActionBar().getCustomView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            }
-        });
     }
 }
