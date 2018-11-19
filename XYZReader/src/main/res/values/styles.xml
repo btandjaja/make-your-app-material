@@ -23,16 +23,22 @@
         <item name="colorAccent">@color/theme_accent</item>
     </style>
 
+    <style name="widthMatchParentHeightWarpContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="textFont" parent="widthMatchParentHeightWarpContent">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+
+
     <!-- detail fragment -->
     <!-- AppBar-->
     <style name="AppBar" parent="AppTheme">
         <item name="android:elevation">@dimen/appBar_elevation</item>
         <item name="android:fitsSystemWindows">true</item>
-    </style>
-
-    <style name="widthMatchParentHeightWarpContent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <!-- fragment toolBar popupTheme-->
@@ -49,9 +55,24 @@
     </style>
 
     <!-- textView title -->
-    <!--<style name="tvTitle" parent="widthMatchParentHeightWarpContent">-->
+    <style name="tvTitle" parent="textFont">
+        <item name="android:lineSpacingMultiplier">@dimen/line_spacing_multiplier</item>
+        <item name="android:paddingBottom">@dimen/detail_metabar_title_bottom_padding</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/detail_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
-    <!--</style>-->
+    <!-- textView articleByLine -->
+    <style name="tvDateAndAuthor" parent="textFont">
+        <item name="android:textColor">@color/ltgray</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- collapsingToolbar-->
+    <style name="collapsingToolbar" parent="widthMatchParentHeightWarpContent">
+
+    </style>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         
@@ -62,7 +83,7 @@
     </style>
 
     <style name="book_title" parent="@style/TextAppearance.AppCompat.Subhead">
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">@dimen/title</item>
     </style>
 
     <style name="author_on_card" parent="@style/TextAppearance.AppCompat.Body1">

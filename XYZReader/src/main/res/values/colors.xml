@@ -24,6 +24,7 @@
     <color name="theme_primary_dark">#263238</color>
     <color name="theme_accent">#CFD8DC</color>
 
+    <color name="white">#FFFFFF</color>
     <color name="ltgray">#ffe0e0e0</color>
     <color name="pink_400">#EC407A</color>
     <color name="pink_A100">#FF80AB</color>
