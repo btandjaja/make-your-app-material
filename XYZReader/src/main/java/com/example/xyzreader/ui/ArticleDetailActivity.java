@@ -117,6 +117,8 @@ public class ArticleDetailActivity extends AppCompatActivity
                 mSelectedItemId = mStartId;
             }
         }
+        // TODO remove
+//        upButtonListener();
     }
 
     @Override
@@ -147,13 +149,17 @@ public class ArticleDetailActivity extends AppCompatActivity
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_left, R.anim.slide_right);
+    private void upButtonListener() {
+        getSupportActionBar().getCustomView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
     }
 
     public void onUpButtonFloorChanged(long itemId, ArticleDetailFragment fragment) {
@@ -197,6 +203,4 @@ public class ArticleDetailActivity extends AppCompatActivity
             return (mCursor != null) ? mCursor.getCount() : 0;
         }
     }
-
-
 }
