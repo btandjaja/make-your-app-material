@@ -94,7 +94,7 @@
     <!-- fab -->
     <style name="fab_style" parent="widthWrapContentHeightWrapContent">
         <item name="android:layout_margin">@dimen/activity_horizontal_margin</item>
-        <item name="android:background">@color/theme_accent</item>
+        <item name="android:backgroundTint">@color/theme_primary_dark</item>
         <item name="android:contentDescription">@string/action_share</item>
         <item name="android:elevation">@dimen/fab_elevation</item>
         <item name="android:src">@drawable/ic_share</item>

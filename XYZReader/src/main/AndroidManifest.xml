@@ -13,6 +13,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Bacon">
+        <!-- app force closes on nexus 5X, API 28 Google Maps SDK and Apache HTTP Legacy library-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
 
         <activity
             android:name=".ui.ArticleListActivity"
