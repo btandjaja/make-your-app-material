@@ -130,13 +130,7 @@ public class ArticleDetailActivity extends AppCompatActivity
         return false;
     }
 
-    public void onUpButtonFloorChanged(long itemId, ArticleDetailFragment fragment) {
-        if (itemId == mSelectedItemId) {
-            mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
-            // TODO updateUpButtonPosition remove
-//            updateUpButtonPosition();
-        }
-    }
+
 
     // TODO remove
 //    private void updateUpButtonPosition() {
