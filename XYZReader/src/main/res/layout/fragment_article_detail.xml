@@ -8,10 +8,8 @@
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
-        style="@style/widthMatchParentHeightWarpContent"
-        android:elevation="@dimen/appBar_elevation"
-        android:fitsSystemWindows="true"
-        android:theme="@style/AppBar">
+        style="@style/AppBarStyle"
+        android:theme="@style/AppTheme">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/fragment_toolbar"

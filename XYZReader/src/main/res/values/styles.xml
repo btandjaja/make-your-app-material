@@ -45,7 +45,7 @@
 
     <!-- detail fragment -->
     <!-- AppBar-->
-    <style name="AppBar" parent="AppTheme">
+    <style name="AppBarStyle" parent="widthMatchParentHeightWarpContent">
         <item name="android:elevation">@dimen/appBar_elevation</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>
@@ -109,6 +109,12 @@
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
+    <!-- article list activity -->
+    <!-- article list appBar -->
+    <style name="articleListAppBar" parent="widthMatchParentHeightWarpContent">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:elevation">@dimen/appBar_elevation</item>
+    </style>
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         
     </style>
