@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="250dp"
     android:layout_marginLeft="@dimen/card_padding_4dp"
-    android:layout_marginRight="@dimen/card_padding_4dp"
     android:layout_marginTop="@dimen/card_padding_4dp"
+    android:layout_marginRight="@dimen/card_padding_4dp"
     android:layout_marginBottom="@dimen/card_padding_4dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/blue_gray_500"
-    android:foreground="?selectableItemBackground">
+    android:foreground="?selectableItemBackground"
+    app:cardBackgroundColor="@color/blue_gray_500">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,22 +22,22 @@
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:scaleType="fitXY"
-            android:background="@color/photo_placeholder" />
+            android:background="@color/photo_placeholder"
+            android:scaleType="fitXY" />
 
         <TextView
             android:id="@+id/article_title"
             style="@style/book_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="@integer/max_lines_4"
             android:paddingLeft="@dimen/card_text_padding_16dp"
             android:paddingTop="@dimen/card_text_padding_16dp"
             android:paddingRight="@dimen/card_text_padding_16dp"
             android:paddingBottom="@dimen/card_padding_4dp"
             android:textColor="@color/ltgray"
-            android:ellipsize="end"
-            android:maxLines="@integer/max_lines_4"
-            android:fontFamily="sans-serif"
             android:textStyle="bold" />
 
         <TextView
