@@ -30,7 +30,6 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/toolbar_container"
         style="@style/articleListAppBar"
-        android:fitsSystemWindows="true"
         android:theme="@style/AppTheme">
 
         <android.support.v7.widget.Toolbar
@@ -41,7 +40,7 @@
             android:layout_marginLeft="@dimen/list_toolbar_side_margin"
             android:layout_marginRight="@dimen/list_toolbar_side_margin"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+            app:layout_collapseMode="pin"
             app:theme="@style/toolbar_article_list">
 
             <ImageView
