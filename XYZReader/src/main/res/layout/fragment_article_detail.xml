@@ -43,16 +43,12 @@
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/detail_collapsingToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
+            style="@style/widthMatchParentHeightMatchParent"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
             <ImageView
                 android:id="@+id/photo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                style="@style/imagePhoto"
                 app:layout_collapseMode="parallax"
                 tools:contentDescription="@null" />
 

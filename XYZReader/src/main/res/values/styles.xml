@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 
-<resources xmlns:app="http://schemas.android.com/apk/res-auto">
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/theme_primary</item>
@@ -26,6 +26,11 @@
     <style name="widthMatchParentHeightWarpContent">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="widthMatchParentHeightMatchParent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
     <style name="textFont" parent="widthMatchParentHeightWarpContent">
@@ -69,9 +74,9 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <!-- collapsingToolbar-->
-    <style name="collapsingToolbar" parent="widthMatchParentHeightWarpContent">
-
+    <!-- image photo-->
+    <style name="imagePhoto" parent="widthMatchParentHeightMatchParent">
+        <item name="android:scaleType">centerCrop</item>
     </style>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
