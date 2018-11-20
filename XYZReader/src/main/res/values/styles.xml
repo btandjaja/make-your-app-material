@@ -130,6 +130,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <!-- list_item_article -->
     <style name="book_title" parent="@style/TextAppearance.AppCompat.Subhead">
         <item name="android:textSize">@dimen/title</item>
     </style>
