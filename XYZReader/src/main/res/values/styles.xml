@@ -33,6 +33,11 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="widthWrapContentHeightWrapContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="textFont" parent="widthMatchParentHeightWarpContent">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
@@ -84,6 +89,14 @@
         <item name="android:background">@color/theme_accent</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:paddingTop">@dimen/paddingTop_24dp</item>
+    </style>
+
+    <!-- fab -->
+    <style name="fab_style" parent="widthWrapContentHeightWrapContent">
+        <item name="android:layout_margin">@dimen/activity_horizontal_margin</item>
+        <item name="android:contentDescription">@string/action_share</item>
+        <item name="android:elevation">@dimen/fab_elevation</item>
+        <item name="android:src">@drawable/ic_share</item>
     </style>
 
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
