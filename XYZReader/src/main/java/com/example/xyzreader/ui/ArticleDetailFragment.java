@@ -257,8 +257,6 @@ public class ArticleDetailFragment extends Fragment implements
                                 window.setStatusBarColor(mMutedColor);
                                 // TODO set matching color when scrolling up
                                 mCollapsingToolbarLayout.setContentScrimColor(mMutedColor);
-                                // TODO question, why is updateStatusBar here? and onCreateView. remove?
-//                                updateStatusBar();
                             }
                         }
 
