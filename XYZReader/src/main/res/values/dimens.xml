@@ -10,6 +10,8 @@
 
     <dimen name="appBar_elevation">4dp</dimen>
 
+    <dimen name="height_4dp">4dp</dimen>
+
     <dimen name="card_padding_4dp">4dp</dimen>
     <dimen name="card_text_padding_16dp">16dp</dimen>
 
