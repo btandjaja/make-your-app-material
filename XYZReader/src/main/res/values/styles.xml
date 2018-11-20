@@ -79,6 +79,13 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <!-- recyclerView article body -->
+    <style name="fragmentRecyclerView" parent="widthMatchParentHeightWarpContent">
+        <item name="android:background">@color/theme_accent</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:paddingTop">@dimen/paddingTop_24dp</item>
+    </style>
+
     <style name="Theme.Bacon" parent="@style/Theme.AppCompat.Light.NoActionBar">
         
     </style>
