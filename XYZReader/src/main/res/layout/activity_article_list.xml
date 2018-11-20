@@ -11,9 +11,7 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_anchor="@id/toolbar_container"
-        app:layout_anchorGravity="bottom"
-        android:fitsSystemWindows="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -21,9 +19,7 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:paddingLeft="@dimen/list_side_margin"
-            android:paddingTop="@dimen/recyclerView_top_padding_article_list"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="28dp"
             android:scrollbarStyle="outsideOverlay" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
