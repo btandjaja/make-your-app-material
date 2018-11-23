@@ -154,7 +154,6 @@ public class ArticleDetailFragment extends Fragment implements
         // TODO recyclerview set layout and create adapter for recyclerview
         articleBodyRecyclerViewAndAdapter();
 
-        bindViews();
         // TODO toolbar
         setToolbar();
         updateStatusBar();

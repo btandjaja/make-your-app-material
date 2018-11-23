@@ -35,8 +35,7 @@
             android:layout_gravity="center_horizontal|center_vertical"
             android:layout_marginLeft="@dimen/list_toolbar_side_margin"
             android:layout_marginRight="@dimen/list_toolbar_side_margin"
-            app:layout_collapseMode="pin"
-            app:theme="@style/toolbar_article_list">
+            app:layout_collapseMode="pin">
 
             <ImageView
                 android:layout_width="wrap_content"
