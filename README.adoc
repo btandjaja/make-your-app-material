@@ -1,4 +1,6 @@
-= XYZ Reader Starter Code
+# XYZ Reader Starter Code
 
 This repository stores the starter code for the XYZ Reader project in Udacity's Android Nanodegree.
 
+In this app, we learn to how to manipulate big data and load it really quickly so the UX feels seamless. As the data cannot be viewed all at once, it is essential to show the data as the user is scrolling, i.e using RecyclerView to display the data as the user is scrolling. It is easier on the backend and load speed. 
+We also learn how to use manipulate Appbar, Toolbar, Collapsing Toolbar, and screen transition so the View is logical for user experience. 
